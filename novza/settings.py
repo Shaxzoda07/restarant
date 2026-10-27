@@ -75,5 +75,6 @@ STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
 }
+DEBUG = os.environ.get("DEBUG", "0") == "1"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
