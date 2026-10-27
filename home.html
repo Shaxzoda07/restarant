@@ -1,0 +1,194 @@
+{% extends "restaurant/base.html" %}
+{% load static restaurant_extras %}
+
+{% block cart_btn %}<button id="cart-btn" class="cart-btn">🛒 Savat <span id="cart-count">0</span></button>{% endblock %}
+
+{% block content %}
+<section id="home" class="hero">
+  <div class="hero-pattern" data-speed="0.25"></div>
+  <div class="glow g1" data-speed="0.15"></div>
+  <div class="glow g2" data-speed="-0.1"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow reveal">Buxoro · Samarqand · zamonaviy dasturxon</p>
+      <h1 class="reveal d1">NOVZA<span>restaurant</span></h1>
+      <p class="lead reveal d2">Asrlar davomida avlodlardan avlodga o‘tgan ta’mlar — bugungi zamonaviy taqdimotda. Faqat milliy va premium taomlar.</p>
+      <div class="hero-btns reveal d3">
+        <a href="#menu" class="btn gold">Menyuni ko‘rish</a>
+        <a href="#tables" class="btn ghost">Stol tanlash</a>
+      </div>
+    </div>
+    <div class="hero-art" data-speed="-0.08">
+      <svg viewBox="0 0 400 520" class="arch" aria-hidden="true">
+        <defs>
+          <pattern id="tile" width="40" height="40" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="#e5c776" stroke-width="1" opacity=".6">
+              <rect x="8" y="8" width="24" height="24"/><rect x="8" y="8" width="24" height="24" transform="rotate(45 20 20)"/><circle cx="20" cy="20" r="4"/>
+            </g>
+          </pattern>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16909f"/><stop offset="1" stop-color="#0a4553"/></linearGradient>
+          <radialGradient id="g2" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#f3d98b"/><stop offset="1" stop-color="#b98a2e"/></radialGradient>
+        </defs>
+        <path d="M14 520V230Q14 90 200 6Q386 90 386 230V520Z" fill="url(#g1)" stroke="#e5c776" stroke-width="3"/>
+        <path d="M46 520V236Q46 116 200 42Q354 116 354 236V520Z" fill="url(#tile)" stroke="#e5c776" stroke-width="1.5"/>
+        <path d="M88 520V248Q88 152 200 92Q312 152 312 248V520Z" fill="#082f3a" stroke="#e5c776" stroke-width="1.5"/>
+        <path d="M88 520V248Q88 152 200 92Q312 152 312 248V520Z" fill="url(#tile)" opacity=".35"/>
+        <g class="spin" transform="translate(200 300)">
+          <circle r="86" fill="none" stroke="#e5c776" stroke-width="1" stroke-dasharray="3 6"/>
+          <circle r="62" fill="url(#g2)"/>
+          <g fill="none" stroke="#7a5714" stroke-width="2"><rect x="-34" y="-34" width="68" height="68"/><rect x="-34" y="-34" width="68" height="68" transform="rotate(45)"/><circle r="14"/></g>
+        </g>
+        <text x="200" y="312" text-anchor="middle" font-size="40">🍚</text>
+      </svg>
+    </div>
+  </div>
+  <svg class="skyline" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <g id="dome"><path d="M0 170V112C0 78 34 70 34 38C34 70 68 78 68 112V170Z"/><rect x="31" y="14" width="6" height="26"/></g>
+      <g id="minaret"><rect x="0" y="54" width="14" height="116"/><rect x="-4" y="46" width="22" height="10"/><path d="M-2 46h18L7 20Z"/></g>
+    </defs>
+    <g fill="#f6eddc">
+      <rect y="140" width="1440" height="30"/>
+      <use href="#minaret" x="40"/><use href="#dome" x="140"/><use href="#dome" x="280" y="20"/><use href="#minaret" x="420"/>
+      <use href="#dome" x="520" y="10"/><use href="#dome" x="640" y="-6" transform="scale(1.1)"/>
+      <use href="#minaret" x="870"/><use href="#dome" x="960" y="16"/><use href="#dome" x="1090"/><use href="#minaret" x="1230"/><use href="#dome" x="1310" y="22"/>
+    </g>
+  </svg>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Buxoro oshi</span><i>✦</i><span>Samarqand noni</span><i>✦</i><span>Tandir somsa</span><i>✦</i><span>Dimlama</span><i>✦</i><span>Shashlik</span><i>✦</i><span>Lag‘mon</span><i>✦</i><span>Chak-chak</span><i>✦</i>
+    <span>Buxoro oshi</span><i>✦</i><span>Samarqand noni</span><i>✦</i><span>Tandir somsa</span><i>✦</i><span>Dimlama</span><i>✦</i><span>Shashlik</span><i>✦</i><span>Lag‘mon</span><i>✦</i><span>Chak-chak</span><i>✦</i>
+  </div>
+</div>
+
+<section id="about" class="section about">
+  <div class="wrap two">
+    <div class="reveal left">
+      <p class="kicker">Biz haqimizda</p>
+      <h2>Ipak yo‘li dasturxoni, <em>bugungi ruhda</em></h2>
+      <p>NOVZA — Buxoro va Samarqand oshxonasining boy merosini zamonaviy taqdim bilan birlashtirgan restoran. Qozon, tandir va ko‘mir olovida tayyorlangan haqiqiy taomlar, tanlangan masalliqlar va mehmondo‘stlik — bizning asosiy qoidamiz.</p>
+      <p>Bu yerda fast-food yo‘q: faqat milliy va premium taomlar, har biri o‘z hikoyasi bilan.</p>
+    </div>
+    <div class="stats reveal right">
+      <div><b data-count="{{ dish_count }}">0</b><span>xil taom</span></div>
+      <div><b data-count="{{ tables|length }}">0</b><span>stol</span></div>
+      <div><b data-count="2">0</b><span>shahar ta’mi</span></div>
+      <div><b data-count="0">0</b><span>fast food</span></div>
+    </div>
+  </div>
+</section>
+
+{% if populars %}
+<section id="popular" class="section dark">
+  <div class="pattern-bg"></div>
+  <div class="wrap">
+    <div class="head center reveal"><p class="kicker">Tanlangan</p><h2>Mehmonlarimiz sevgan taomlar</h2><div class="orn"></div></div>
+    <div class="grid">
+      {% for d in populars %}{% include "restaurant/_card.html" %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section id="menu" class="section">
+  <div class="wrap">
+    <div class="head center reveal"><p class="kicker">Menyu</p><h2>Dasturxonimizga xush kelibsiz</h2><div class="orn"></div></div>
+    <div class="menu-tools reveal">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-cat="all">Barchasi</button>
+        {% for c in categories %}<button class="tab" data-cat="c{{ c.id }}">{{ c.icon }} {{ c.name }}</button>{% endfor %}
+      </div>
+      <input id="search" type="search" placeholder="🔍 Taom qidirish…">
+    </div>
+    {% for c in categories %}
+    <div class="menu-cat" data-cat="c{{ c.id }}">
+      <h3 class="cat-title reveal"><span>{{ c.icon }}</span> {{ c.name }}</h3>
+      <div class="grid">
+        {% for d in c.visible_dishes %}{% include "restaurant/_card.html" %}{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+    <p id="no-result" class="center muted" hidden>Hech narsa topilmadi.</p>
+  </div>
+</section>
+
+<section id="heritage" class="section heritage">
+  <div class="pattern-bg"></div>
+  <div class="wrap">
+    <div class="head center reveal"><p class="kicker">Meros</p><h2>Ikki buyuk shahar, bitta dasturxon</h2><div class="orn"></div></div>
+    <div class="her-grid">
+      <div class="her-card reveal left"><span class="her-num">01</span><h3>Buxoro</h3><p>Qozonda damlangan to‘y oshi, jiz-biz va tandir go‘shti — asrlik Buxoro usullari.</p></div>
+      <div class="her-card reveal d1"><span class="her-num">02</span><h3>Samarqand</h3><p>Dumbali osh, xushbo‘y non va Registon kabi nafis ta’mlar — sizning dasturxoningizda.</p></div>
+      <div class="her-card reveal right d2"><span class="her-num">03</span><h3>Bugun</h3><p>Milliy ta’mlarning zamonaviy talqini: chiroyli taqdim, yengil ohang, premium masalliq.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tables" class="section">
+  <div class="wrap">
+    <div class="head center reveal"><p class="kicker">Stollar</p><h2>O‘zingizga qulay joyni tanlang</h2><div class="orn"></div></div>
+    <div class="legend reveal"><span><i class="dot free"></i> Bo‘sh</span><span><i class="dot busy"></i> Band</span></div>
+    <div class="tables">
+      {% for t in tables %}
+      <button class="table {% if t.busy %}busy{% endif %} reveal" data-id="{{ t.id }}" {% if t.busy %}disabled{% endif %}>
+        <b>{{ t.number }}</b><span>{{ t.get_zone_display }}</span><small>{{ t.seats }} kishilik</small>
+      </button>
+      {% empty %}<p class="center muted">Stollar hali qo‘shilmagan.</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if gallery %}
+<section id="gallery" class="section dark">
+  <div class="pattern-bg"></div>
+  <div class="wrap">
+    <div class="head center reveal"><p class="kicker">Galereya</p><h2>NOVZA muhiti</h2><div class="orn"></div></div>
+    <div class="gallery">
+      {% for g in gallery %}<figure class="reveal"><img src="{{ g.photo }}" alt="{{ g.caption }}" loading="lazy">{% if g.caption %}<figcaption>{{ g.caption }}</figcaption>{% endif %}</figure>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section id="track" class="section track">
+  <div class="wrap narrow center">
+    <div class="head reveal"><p class="kicker">Buyurtma holati</p><h2>Buyurtmangiz qayerda?</h2><div class="orn"></div></div>
+    <form action="{% url 'track' %}" method="get" class="track-form reveal">
+      <input name="code" placeholder="6 xonali buyurtma kodi" inputmode="numeric" maxlength="7" required>
+      <button class="btn gold">Tekshirish</button>
+    </form>
+  </div>
+</section>
+
+<div id="overlay"></div>
+<aside id="drawer" aria-label="Savat">
+  <div class="drawer-head"><h3>Savatingiz</h3><button id="close-cart" aria-label="Yopish">✕</button></div>
+  <div id="cart-empty" class="muted center">Savat hozircha bo‘sh.<br>Menyudan taom tanlang 🍚</div>
+  <div id="cart-items"></div>
+  <form id="order-form" autocomplete="on">
+    <div class="total-row"><span>Jami</span><b id="cart-total">0</b></div>
+    <div class="pills" id="otype">
+      <label><input type="radio" name="otype" value="dine" checked><span>Zalda</span></label>
+      <label><input type="radio" name="otype" value="takeaway"><span>Olib ketish</span></label>
+      <label><input type="radio" name="otype" value="delivery"><span>Yetkazish</span></label>
+    </div>
+    <select id="f-table" name="table">
+      <option value="">Stolni tanlang…</option>
+      {% for t in tables %}{% if not t.busy %}<option value="{{ t.id }}">Stol №{{ t.number }} — {{ t.get_zone_display }} ({{ t.seats }} kishilik)</option>{% endif %}{% endfor %}
+    </select>
+    <input id="f-name" name="name" placeholder="Ismingiz" required>
+    <input id="f-phone" name="phone" placeholder="Telefon: +998 ..." inputmode="tel" required>
+    <input id="f-address" name="address" placeholder="Yetkazib berish manzili" hidden>
+    <textarea id="f-comment" name="comment" rows="2" placeholder="Izoh (ixtiyoriy)"></textarea>
+    <p id="form-error" class="error" hidden></p>
+    <button class="btn gold block" id="submit-order">Buyurtma berish</button>
+  </form>
+</aside>
+{% endblock %}
+
+{% block scripts %}
+{{ dish_map|json_script:"dish-data" }}
+<script src="{% static 'restaurant/js/cart.js' %}"></script>
+{% endblock %}

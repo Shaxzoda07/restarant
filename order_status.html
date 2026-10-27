@@ -1,0 +1,50 @@
+{% extends "restaurant/base.html" %}
+{% load restaurant_extras %}
+{% block title %}Buyurtma holati — NOVZA{% endblock %}
+{% block content %}
+<section class="section status-page">
+  <div class="pattern-bg"></div>
+  <div class="wrap narrow">
+  {% if not_found %}
+    <div class="panel center">
+      <h2>Buyurtma topilmadi</h2>
+      <p class="muted">«{{ code }}» kodli buyurtma yo‘q. Kodni tekshirib qaytadan urinib ko‘ring.</p>
+      <a class="btn gold" href="{% url 'home' %}#track">Orqaga</a>
+    </div>
+  {% else %}
+    <div class="panel">
+      <p class="kicker center">Buyurtma</p>
+      <h2 class="center">#{{ order.code }}</h2>
+      {% if order.status == "cancelled" %}
+        <p class="center cancelled">Buyurtma bekor qilindi.</p>
+      {% else %}
+        <ol class="steps" data-status="{{ order.status }}" data-url="{% url 'order_json' order.code %}">
+          {% for s in steps %}<li class="{{ s.state }}"><span class="ic">{{ s.icon }}</span><b>{{ s.label }}</b></li>{% endfor %}
+        </ol>
+      {% endif %}
+      <div class="info">
+        <p><span>Turi:</span> {{ order.get_order_type_display }}{% if order.table %} — {{ order.table }}{% endif %}</p>
+        {% if order.address %}<p><span>Manzil:</span> {{ order.address }}</p>{% endif %}
+        <p><span>Mijoz:</span> {{ order.customer_name }}, {{ order.phone }}</p>
+      </div>
+      <ul class="lines">
+        {% for i in order.items.all %}<li><span>{{ i.name }} × {{ i.qty }}</span><b>{{ i.subtotal|som }} so‘m</b></li>{% endfor %}
+      </ul>
+      <div class="total-row"><span>Jami</span><b>{{ order.total|som }} so‘m</b></div>
+      <div class="center"><a class="btn ghost-dark" href="{% url 'home' %}">Bosh sahifa</a></div>
+    </div>
+  {% endif %}
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+(function(){
+  var el=document.querySelector('.steps'); if(!el) return;
+  var cur=el.dataset.status, url=el.dataset.url;
+  setInterval(function(){
+    fetch(url).then(function(r){return r.json()}).then(function(d){ if(d.status!==cur) location.reload(); }).catch(function(){});
+  }, 7000);
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+:root{
+  --primary:#0a4553; --secondary:#0e6e7e; --accent:#c9a24a;
+  --header-bg:#0a4553; --header-color:#f6eddc; --header-branding-color:#e9cf88; --header-link-color:#f6eddc;
+  --link-fg:#0e6e7e; --link-hover-color:#b5502f; --link-selected-fg:#0a4553;
+  --button-bg:#0e6e7e; --button-hover-bg:#0a4553; --default-button-bg:#0e6e7e; --default-button-hover-bg:#0a4553;
+  --object-tools-bg:#0a4553; --object-tools-hover-bg:#c9a24a;
+  --breadcrumbs-bg:#0e6e7e; --breadcrumbs-link-fg:#f6eddc; --breadcrumbs-fg:#e9cf88;
+}
+#header{border-bottom:3px solid #c9a24a}

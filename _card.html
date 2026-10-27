@@ -1,0 +1,15 @@
+{% load restaurant_extras %}
+<article class="dish reveal" data-name="{{ d.name|lower }}">
+  <div class="dish-img">
+    {% if d.photo %}<img src="{{ d.photo }}" alt="{{ d.name }}" loading="lazy">{% else %}<div class="ph"><span>{{ d.emoji }}</span></div>{% endif %}
+    {% if d.is_new %}<span class="badge new">Yangi</span>{% elif d.is_popular %}<span class="badge">★ Mashhur</span>{% endif %}
+  </div>
+  <div class="dish-body">
+    <h3>{{ d.name }}</h3>
+    <p>{{ d.description }}</p>
+    <div class="dish-foot">
+      <div><b class="price">{{ d.price|som }}</b> <small>so‘m</small>{% if d.weight %}<em>{{ d.weight }}</em>{% endif %}</div>
+      <button class="add" data-id="{{ d.id }}" aria-label="Savatga qo‘shish">+</button>
+    </div>
+  </div>
+</article>
